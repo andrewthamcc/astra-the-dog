@@ -1,11 +1,13 @@
 {
   "name": "astradog",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build-css": "tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css",
+    "lint": "eslint . --ext .ts,.tsx",
     "prettier": "npx prettier --write src/",
     "preview": "vite preview"
   },
@@ -14,13 +16,24 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@iconify/icons-mdi": "^1.2.38",
+    "@iconify/react": "^4.0.1",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
     "@vitejs/plugin-react": "^3.0.0",
+    "autoprefixer": "^10.4.13",
     "eslint": "^8.31.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.31.11",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "postcss": "^8.4.20",
     "prettier": "^2.8.1",
+    "prettier-plugin-tailwindcss": "^0.2.1",
+    "tailwindcss": "^3.2.4",
     "typescript": "^4.9.3",
     "vite": "^4.0.0"
   }
