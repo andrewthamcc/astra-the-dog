@@ -21,8 +21,8 @@ module.exports = {
     },
     extend: {
       backgroundImage: {
-        'astra-footer': "url('./src/assets/footer.jpg')",
-        'astra-hero': "url('./src/assets/hero.jpg')",
+        'astra-footer': "url('./public/assets/footer.jpg')",
+        'astra-hero': "url('./public/assets/hero.jpg')",
       },
       fontFamily: {
         noto: ['Noto Sans', 'sans-serif'],
