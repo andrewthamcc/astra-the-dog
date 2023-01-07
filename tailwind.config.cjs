@@ -1,4 +1,5 @@
-/** @type {import('tailwindcss').Config} */
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: ['./index.html', './src/**/*.{js,jsx,ts,tsx}'],
   theme: {
@@ -9,13 +10,25 @@ module.exports = {
         pink: '#D32B79',
         teal: '#49BEDF',
       },
+      transparent: 'transparent',
+      current: 'currentColor',
+      black: colors.black,
+      white: colors.white,
+      gray: colors.gray,
+      emerald: colors.emerald,
+      indigo: colors.indigo,
+      yellow: colors.yellow,
     },
     extend: {
       backgroundImage: {
+        'astra-footer': "url('./src/assets/footer.jpg')",
         'astra-hero': "url('./src/assets/hero.jpg')",
       },
       fontFamily: {
         noto: ['Noto Sans', 'sans-serif'],
+      },
+      rotate: {
+        20: '20deg',
       },
     },
   },

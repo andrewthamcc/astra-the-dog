@@ -3,6 +3,7 @@ import { Icon as Iconify, IconifyIcon } from '@iconify/react'
 import atIcon from '@iconify/icons-mdi/at'
 import cakeVariantOutline from '@iconify/icons-mdi/cake-variant-outline'
 import dnaIcon from '@iconify/icons-mdi/dna'
+import dogIcon from '@iconify/icons-mdi/dog'
 import driversLicenseOutline from '@iconify/icons-mdi/drivers-license-outline'
 import hospitalBoxOutline from '@iconify/icons-mdi/hospital-box-outline'
 import mapMarker from '@iconify/icons-mdi/map-marker'
@@ -16,6 +17,7 @@ export const ICON_TYPES = [
   'cake',
   'color',
   'dna',
+  'dog',
   'email',
   'height',
   'hospital',
@@ -31,6 +33,7 @@ const iconVariants: Record<IconVariants, IconifyIcon> = {
   cake: cakeVariantOutline,
   color: paletteOutline,
   dna: dnaIcon,
+  dog: dogIcon,
   email: atIcon,
   height: rulerIcon,
   hospital: hospitalBoxOutline,
@@ -41,14 +44,27 @@ const iconVariants: Record<IconVariants, IconifyIcon> = {
   vaccine: needleIcon,
 }
 
+type ColorVariants = 'pink' | 'teal' | 'blue' | 'black' | 'gray'
+const colors: Record<ColorVariants, string> = {
+  black: 'black',
+  blue: '#1D3557',
+  gray: '#B5B5B5',
+  pink: '#D32B79',
+  teal: '#49BEDF',
+}
+
 interface IconProps {
+  className?: string
+  color?: ColorVariants
   icon: IconVariants
 }
 
-export const Icon = ({ icon }: IconProps) => {
+export const Icon = ({ className, color = 'black', icon }: IconProps) => {
   return (
-    <div className="flex flex-col justify-center align-middle text-4xl">
-      <Iconify icon={iconVariants[icon]} />
+    <div
+      className={`flex flex-col items-center justify-center text-4xl ${className}`}
+    >
+      <Iconify icon={iconVariants[icon]} style={{ color: colors[color] }} />
     </div>
   )
 }

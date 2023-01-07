@@ -1,2 +1,5 @@
 export * from './icon'
 export * from './info'
+export * from './location'
+export * from './modal'
+export * from './vaccine-modal'

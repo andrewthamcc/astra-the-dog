@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Layout } from './layout'
-import { Info } from './components'
+import { Info, Location } from './components'
 import './index.css'
 
 const App = () => (
   <Layout>
     <Info />
+    <Location />
   </Layout>
 )
 
