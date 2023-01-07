@@ -1,15 +1,29 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Layout } from './layout'
-import { Info, Location } from './components'
+import { Hero, Info, Location } from './components'
 import './index.css'
 
-const App = () => (
-  <Layout>
-    <Info />
-    <Location />
-  </Layout>
-)
+const App = () => {
+  React.useEffect(() => {
+    console.log(`
+,-.___,-.
+\\_/_ _\\_/
+  )O_O(
+ { (_) }
+  '-^-' 
+Astra's paw-sonal website
+  `)
+  }, [])
+
+  return (
+    <Layout>
+      <Hero />
+      <Info />
+      <Location />
+    </Layout>
+  )
+}
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

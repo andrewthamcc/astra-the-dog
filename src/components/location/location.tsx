@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { Icon } from '../icon'
 
 export const Location = () => {
+  const [qrScanned, setQrScanned] = useState(false)
   const [coords, setCoords] = useState<
     { lat: number; long: number } | undefined
   >(undefined)
@@ -10,18 +11,10 @@ export const Location = () => {
     undefined
   )
 
-  const getError = (error: GeolocationPositionError) => {
-    switch (error.code) {
-      case error.PERMISSION_DENIED:
-        return 'Permission Denied.'
-      case error.POSITION_UNAVAILABLE:
-        return 'Location unavailable.'
-      case error.TIMEOUT:
-        return 'Location request timed out.'
-      default:
-        return 'An unknown error occurred.'
-    }
-  }
+  useEffect(() => {
+    const isQRScanned = document.location.search.includes('qr')
+    setQrScanned(isQRScanned)
+  }, [])
 
   const handleGetLocation = () => {
     if (navigator.geolocation) {
@@ -33,26 +26,49 @@ export const Location = () => {
           setCoords({ lat, long })
         },
         (error) => {
-          const errMessage = getError(error)
-          setErrorMessage(errMessage)
+          let message = 'error'
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              message = 'Permission Denied.'
+              break
+            case error.POSITION_UNAVAILABLE:
+              message = 'Location unavailable.'
+              break
+            case error.TIMEOUT:
+              message = 'Location request timed out.'
+              break
+            default:
+              message = 'An unknown error occurred.'
+              break
+          }
+          setErrorMessage(message)
         }
       )
     }
   }
 
+  const title = qrScanned
+    ? !coords
+      ? 'Where am I?'
+      : 'Here I Am!'
+    : 'Where are you?'
   const emailSubject = `Astra's Location`
   const emailBody = `Find me here! latitude: ${coords?.lat} longitude: ${coords?.long}`
 
   return (
     <div className="flex flex-col items-center justify-center py-8 text-center">
-      <h3 className="text-2xl">{!coords ? 'Where am I?' : 'Here I am!'}</h3>
+      <h3 className="text-2xl">{title}</h3>
 
       {!coords && (
         <button className="my-4" onClick={handleGetLocation}>
           <Icon className="my-2" color="blue" icon="location" />
-          <p className="">get my location</p>
+          <p className="">
+            {qrScanned ? 'Get my location' : 'Locate yourself!'}
+          </p>
           <p className="text-xs italic">
-            &quot;I&apos;ll ask you for permission!&quot;
+            {qrScanned
+              ? `I'll ask you for permission!`
+              : `You didn't scan my collar`}
           </p>
         </button>
       )}
@@ -75,15 +91,18 @@ export const Location = () => {
                 </Popup>
               </Marker>
             </MapContainer>
-
-            <a
-              className="cursor-pointer hover:underline"
-              href={`mailto:hello@astrathedog.cc?subject=${emailSubject}&body=${emailBody}`}
-              rel="noreferrer"
-              target="_blank"
-            >
-              Share my location to my Paw-rents
-            </a>
+            {qrScanned ? (
+              <a
+                className="cursor-pointer hover:underline"
+                href={`mailto:hello@astrathedog.cc?subject=${emailSubject}&body=${emailBody}`}
+                rel="noreferrer"
+                target="_blank"
+              >
+                Share my location to my Paw-rents
+              </a>
+            ) : (
+              <p>There you are!</p>
+            )}
           </div>
         )}
       </div>

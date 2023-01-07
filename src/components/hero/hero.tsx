@@ -1,23 +1,14 @@
 import React from 'react'
-import { Icon } from '../../components'
+import { Icon } from '..'
 
 export const Hero = () => {
-  React.useEffect(() => {
-    console.log(`
-    ,-.___,-.
-    \\_/_ _\\_/
-      )O_O(
-     { (_) }
-      '-^-' `)
-    console.log(`Astra's Paw-sonal Website`)
-  }, [])
-
   return (
     <>
-      <div className="m-auto w-4/5 pt-20">
-        <h1 className="mb-6 py-2 font-noto text-4xl">Astra the Dog</h1>
-        <div className="h-96 rounded-md bg-astra-hero bg-cover bg-center bg-no-repeat drop-shadow-sm" />
+      <div className="my-6 font-noto">
+        <h1 className="text-6xl">Astra the Dog</h1>
+        <h2 className="text-xl">paw-sonal website</h2>
       </div>
+      <div className="h-96 rounded-md bg-astra-hero bg-cover bg-center bg-no-repeat drop-shadow-sm" />
       <div className="mt-20 mb-10 text-center">
         <div className="flex justify-center">
           <div className="mb-6 -rotate-12">
