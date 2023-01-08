@@ -7,27 +7,27 @@ import 'swiper/swiper.min.css'
 
 const PHOTOS = [
   {
-    photo: 'one',
+    photo: 'one.jpg',
     caption: '☕️ at my favourite cafe',
   },
   {
-    photo: 'two',
+    photo: 'two.jpeg',
     caption: 'Ruffwear fit check',
   },
   {
-    photo: 'three',
+    photo: 'three.jpg',
     caption: 'Train ride',
   },
   {
-    photo: 'four',
+    photo: 'four.jpeg',
     caption: `Halloween. I'm a dragon, RAWR!`,
   },
   {
-    photo: 'five',
+    photo: 'five.jpeg',
     caption: 'I have a hard life...',
   },
   {
-    photo: 'six',
+    photo: 'six.jpg',
     caption: 'Fresh cut from The Bonehouse',
   },
 ] as const
@@ -37,15 +37,11 @@ export const Photos = () => {
     <Section icon="photo" title="It Me!">
       <Swiper modules={[Pagination]} pagination={{ clickable: true }}>
         {PHOTOS.map(({ photo, caption }, i) => {
-          const bg = `bg-astra-${photo} `
-
           return (
             <SwiperSlide key={i}>
               <div
-                className={
-                  bg +
-                  `flex h-96 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 sm:h-[35rem] `
-                }
+                className="flex h-96 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 sm:h-[35rem]"
+                style={{ backgroundImage: `url('/assets/${photo}')` }}
               >
                 <p
                   className="font-semi-bold text-lg text-white"
