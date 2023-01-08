@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { Layout } from './layout'
-import { Favourites, Hero, Info, Location } from './components'
+import { Favourites, Hero, Info, Location, Photos } from './components'
 import './index.css'
 
 const App = () => {
@@ -21,6 +21,7 @@ Astra's paw-sonal website
       <Hero />
       <Info />
       <Location />
+      <Photos />
       <Favourites />
     </Layout>
   )
