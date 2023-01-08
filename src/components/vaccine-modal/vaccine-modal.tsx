@@ -48,6 +48,14 @@ export const VaccineModal = ({ onClose, open }: VaccineProps) => {
           <div className="font-bold">
             <p>{RABIES_VACCINE.vet}</p>
           </div>
+
+          <button
+            className="rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
+            onClick={onClose}
+            type="button"
+          >
+            Close
+          </button>
         </div>
       </div>
     </Modal>
