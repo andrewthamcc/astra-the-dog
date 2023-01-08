@@ -16,7 +16,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-leaflet": "^4.2.0",
-    "react-modal": "^3.16.1"
+    "react-modal": "^3.16.1",
+    "swiper": "^8.4.5"
   },
   "devDependencies": {
     "@iconify/icons-mdi": "^1.2.38",

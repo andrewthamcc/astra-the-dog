@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Section } from '../../layout'
-import { VaccineModal } from '../vaccine-modal'
+import { VaccineModal } from '../vaccine'
 import { InfoPoint } from './info-point'
 
 export const Info = () => {

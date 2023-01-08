@@ -2,6 +2,7 @@ import React from 'react'
 import { Icon as Iconify, IconifyIcon } from '@iconify/react'
 import atIcon from '@iconify/icons-mdi/at'
 import cakeVariantOutline from '@iconify/icons-mdi/cake-variant-outline'
+import cameraIcon from '@iconify/icons-mdi/camera'
 import cardsHeart from '@iconify/icons-mdi/cards-heart'
 import dnaIcon from '@iconify/icons-mdi/dna'
 import dogIcon from '@iconify/icons-mdi/dog'
@@ -32,6 +33,7 @@ export const ICON_TYPES = [
   'location',
   'paw',
   'phone',
+  'photo',
   'weight',
   'vaccine',
 ] as const
@@ -52,6 +54,7 @@ const iconVariants: Record<IconVariants, IconifyIcon> = {
   location: mapMarker,
   paw: pawIcon,
   phone: phoneIcon,
+  photo: cameraIcon,
   weight: weightKilogram,
   vaccine: needleIcon,
 }

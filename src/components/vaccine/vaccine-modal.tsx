@@ -1,5 +1,5 @@
 import React from 'react'
-import { Modal } from '../modal'
+import ReactModal from 'react-modal'
 import { Icon } from '../icon'
 
 interface VaccineProps {
@@ -18,9 +18,29 @@ export const RABIES_VACCINE = {
   vet: `Ciara O'Meara DVM`,
 } as const
 
+ReactModal.setAppElement(document.getElementById('root') as HTMLElement)
+
 export const VaccineModal = ({ onClose, open }: VaccineProps) => {
   return (
-    <Modal label="rabies vaccine info" onClose={onClose} open={open}>
+    <ReactModal
+      contentLabel="rabies vaccine info"
+      isOpen={open}
+      onRequestClose={onClose}
+      style={{
+        overlay: {
+          backgroundColor: 'rgba(0,0,0,0.6)',
+        },
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+          borderRadius: '0.325rem',
+        },
+      }}
+    >
       <div className="p-4 text-center">
         <div className="mb-2 flex items-center justify-center">
           <Icon icon="vaccine" />
@@ -58,6 +78,6 @@ export const VaccineModal = ({ onClose, open }: VaccineProps) => {
           </button>
         </div>
       </div>
-    </Modal>
+    </ReactModal>
   )
 }
