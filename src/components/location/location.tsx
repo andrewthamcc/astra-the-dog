@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { Section } from '../../layout'
 import { Icon } from '../icon'
 
 export const Location = () => {
-  const [qrScanned, setQrScanned] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [coords, setCoords] = useState<
     { lat: number; long: number } | undefined
@@ -13,10 +12,7 @@ export const Location = () => {
     undefined
   )
 
-  useEffect(() => {
-    const isQRScanned = document.location.search.includes('qr')
-    setQrScanned(isQRScanned)
-  }, [])
+  const isQRScanned = document.location.search.includes(import.meta.env.VITE_QR)
 
   const handleGetLocation = () => {
     setIsLoading(true)
@@ -67,13 +63,15 @@ export const Location = () => {
           >
             Locate Me!
           </button>
-          {!qrScanned && (
+          {!isQRScanned && (
             <p className="text-xs italic">
               Oops! You didn&apos;t arrive by scanning my collar.
             </p>
           )}
           <p className="text-xs italic">
-            {qrScanned ? `I'll ask you for permission!` : `This will find you!`}
+            {isQRScanned
+              ? `I'll ask you for permission!`
+              : `This will find you!`}
           </p>
         </>
       )}
@@ -116,7 +114,7 @@ export const Location = () => {
               </Popup>
             </Marker>
           </MapContainer>
-          {qrScanned ? (
+          {isQRScanned ? (
             <div>
               <p>Email my location or call my paw-rents</p>
               <div className="flex flex-col items-center justify-center gap-2">

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Section } from '../../layout'
-import BoneHouse from '../../../public/assets/logos/bonehouse.png'
-import DogLogic from '../../../public/assets/logos/doglogic.webp'
-import Ruffwear from '../../../public/assets/logos/ruffwear.jpeg'
-import WhenHoundsFly from '../../../public/assets/logos/whenhoundsfly.png'
+import BoneHouse from '../../assets/bonehouse.png'
+import DogLogic from '../../assets/doglogic.webp'
+import Ruffwear from '../../assets/ruffwear.jpeg'
+import WhenHoundsFly from '../../assets/whenhoundsfly.png'
 
 interface Favourite {
   alt?: string
