@@ -1,3 +1,4 @@
+export * from './favourites'
 export * from './hero'
 export * from './icon'
 export * from './info'

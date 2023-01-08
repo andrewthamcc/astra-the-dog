@@ -2,14 +2,18 @@ import React from 'react'
 import { Icon as Iconify, IconifyIcon } from '@iconify/react'
 import atIcon from '@iconify/icons-mdi/at'
 import cakeVariantOutline from '@iconify/icons-mdi/cake-variant-outline'
+import cardsHeart from '@iconify/icons-mdi/cards-heart'
 import dnaIcon from '@iconify/icons-mdi/dna'
 import dogIcon from '@iconify/icons-mdi/dog'
+import dogSide from '@iconify/icons-mdi/dog-side'
 import driversLicenseOutline from '@iconify/icons-mdi/drivers-license-outline'
+import genderFemale from '@iconify/icons-mdi/gender-female'
 import hospitalBoxOutline from '@iconify/icons-mdi/hospital-box-outline'
 import mapMarker from '@iconify/icons-mdi/map-marker'
 import needleIcon from '@iconify/icons-mdi/needle'
 import paletteOutline from '@iconify/icons-mdi/palette-outline'
 import pawIcon from '@iconify/icons-mdi/paw'
+import phoneIcon from '@iconify/icons-mdi/phone'
 import rulerIcon from '@iconify/icons-mdi/ruler'
 import weightKilogram from '@iconify/icons-mdi/weight-kilogram'
 
@@ -18,12 +22,16 @@ export const ICON_TYPES = [
   'color',
   'dna',
   'dog',
+  'dogSide',
   'email',
+  'gender',
+  'heart',
   'height',
   'hospital',
   'license',
   'location',
   'paw',
+  'phone',
   'weight',
   'vaccine',
 ] as const
@@ -34,12 +42,16 @@ const iconVariants: Record<IconVariants, IconifyIcon> = {
   color: paletteOutline,
   dna: dnaIcon,
   dog: dogIcon,
+  dogSide: dogSide,
   email: atIcon,
+  gender: genderFemale,
+  heart: cardsHeart,
   height: rulerIcon,
   hospital: hospitalBoxOutline,
   license: driversLicenseOutline,
   location: mapMarker,
   paw: pawIcon,
+  phone: phoneIcon,
   weight: weightKilogram,
   vaccine: needleIcon,
 }

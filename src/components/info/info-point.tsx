@@ -12,16 +12,16 @@ type InfoPointProps =
       href?: never
       icon: Exclude<IconVariants, 'email' | 'dna'>
       link?: never
-      value: string
+      value: string | React.ReactElement
     }
 
 export const InfoPoint = ({ link, href, icon, value }: InfoPointProps) => {
   return (
-    <div className="flex justify-center gap-x-4">
+    <div className="grid grid-cols-2 items-center">
       <Icon color="blue" icon={icon} />
       {link && href ? (
         <a
-          className="hover:underline"
+          className="font-semibold hover:underline"
           href={href}
           rel="noreferrer"
           target="_blank"
@@ -29,9 +29,7 @@ export const InfoPoint = ({ link, href, icon, value }: InfoPointProps) => {
           {link}
         </a>
       ) : (
-        <div className="flex items-center justify-center">
-          <p className="m-auto">{value}</p>
-        </div>
+        <p className="text-left">{value}</p>
       )}
     </div>
   )

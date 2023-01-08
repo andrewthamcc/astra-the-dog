@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Icon } from '../icon'
+import { Section } from '../../layout'
 import { VaccineModal } from '../vaccine-modal'
 import { InfoPoint } from './info-point'
 
@@ -7,33 +7,39 @@ export const Info = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   return (
-    <>
-      <Icon className="my-2 text-6xl" color="blue" icon="dog" />
-      <div className="m-auto grid w-4/5 grid-cols-2 grid-rows-4 gap-x-4 gap-y-2 pt-6 pb-8">
+    <Section icon="dog" title="Who am I?">
+      <div className="flex flex-col gap-2 text-left">
+        <InfoPoint icon="dogSide" value="Mini Goldendoodle" />
+        <InfoPoint icon="gender" value="Female" />
         <InfoPoint
           icon="cake"
           value={new Date('2021/10/15').toLocaleDateString()}
         />
-        <InfoPoint icon="license" value="D21-357862" />
         <InfoPoint icon="color" value="Cream" />
-        <button
-          aria-label="view vaccine info"
-          className="hover:underline"
-          onClick={() => setIsModalOpen(true)}
-        >
-          <InfoPoint icon="vaccine" value="13120579" />
-        </button>
         <InfoPoint icon="height" value="38cm" />
+        <InfoPoint icon="weight" value="7.5kg" />
+        <InfoPoint icon="license" value="D21-357862" />
+        <InfoPoint
+          icon="vaccine"
+          value={
+            <button
+              aria-label="view vaccine info"
+              className="m-auto font-semibold hover:underline"
+              onClick={() => setIsModalOpen(true)}
+            >
+              13120579
+            </button>
+          }
+        />
+        <InfoPoint icon="hospital" value="Bluecross Animal Hospital" />
         <InfoPoint
           href="https://embarkvet.com/dog/astra78"
           icon="dna"
           link="Embark"
         />
-        <InfoPoint icon="weight" value="7.5kg" />
-        <InfoPoint icon="hospital" value="Bluecross Animal Hospital" />
       </div>
 
       <VaccineModal onClose={() => setIsModalOpen(false)} open={isModalOpen} />
-    </>
+    </Section>
   )
 }
