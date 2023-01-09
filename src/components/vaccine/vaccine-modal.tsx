@@ -8,14 +8,13 @@ interface VaccineProps {
 }
 
 export const RABIES_VACCINE = {
-  tag: 13120579,
-  date: '2022/03/24',
-  producer: 'Merial',
-  expiry: '2023/02/10',
-  lot: 18511,
-  type: 'Killed Virus',
-  renewalDate: '2023/03/24',
-  vet: `Ciara O'Meara DVM`,
+  Producer: 'Merial',
+  Type: 'Killed Virus',
+  'Serial/Lot #': 18511,
+  'Lot Exp': '2023/02/10',
+  'Tag #': 13120579,
+  Date: '2022/03/24',
+  Vet: `Ciara O'Meara DVM`,
 } as const
 
 ReactModal.setAppElement(document.getElementById('root') as HTMLElement)
@@ -28,7 +27,7 @@ export const VaccineModal = ({ onClose, open }: VaccineProps) => {
       onRequestClose={onClose}
       style={{
         overlay: {
-          backgroundColor: 'rgba(0,0,0,0.6)',
+          backgroundColor: 'rgba(0,0,0,0.7)',
         },
         content: {
           top: '50%',
@@ -50,25 +49,12 @@ export const VaccineModal = ({ onClose, open }: VaccineProps) => {
         </div>
 
         <div className="flex flex-col justify-center gap-4 text-sm">
-          <div>
-            <p>Producer: {RABIES_VACCINE.producer}</p>
-            <p>Type: {RABIES_VACCINE.type}</p>
-          </div>
-
-          <div>
-            <p>Serial/Lot #: {RABIES_VACCINE.lot}</p>
-            <p>Lot Exp: {RABIES_VACCINE.expiry}</p>
-          </div>
-
-          <div>
-            <p>Tag #: {RABIES_VACCINE.tag}</p>
-            <p>Date: {new Date(RABIES_VACCINE.date).toLocaleDateString()}</p>
-          </div>
-
-          <div className="font-bold">
-            <p>{RABIES_VACCINE.vet}</p>
-          </div>
-
+          {Object.keys(RABIES_VACCINE).map((key, i) => (
+            <p key={i}>
+              <span className="font-medium">{key}:</span>{' '}
+              {RABIES_VACCINE[key as keyof typeof RABIES_VACCINE]}
+            </p>
+          ))}
           <button
             className="rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
             onClick={onClose}

@@ -31,7 +31,11 @@ export const Info = () => {
             </button>
           }
         />
-        <InfoPoint icon="hospital" value="Bluecross Animal Hospital" />
+        <InfoPoint
+          href="https://www.bluecrossanimalhospital.ca/"
+          icon="hospital"
+          link="Bluecross Animal Hospital"
+        />
         <InfoPoint
           href="https://embarkvet.com/dog/astra78"
           icon="dna"

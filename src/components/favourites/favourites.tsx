@@ -60,8 +60,12 @@ export const Favourites = () => {
             target="_blank"
           >
             {f.logo && f.alt ? (
-              <div className="m-auto flex w-1/3 items-center justify-center">
-                <img alt={f.alt} src={f.logo} />
+              <div className="m-auto flex h-20 items-center justify-center">
+                <img
+                  alt={f.alt}
+                  className="margin-x-auto block h-[100%] w-auto max-w-[100%]"
+                  src={f.logo}
+                />
               </div>
             ) : (
               f.title

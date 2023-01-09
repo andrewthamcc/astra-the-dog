@@ -4,13 +4,13 @@ import { Icon, IconVariants } from '../icon'
 type InfoPointProps =
   | {
       href: string
-      icon: Extract<IconVariants, 'email' | 'dna'>
+      icon: Extract<IconVariants, 'email' | 'dna' | 'hospital'>
       link: string
       value?: never
     }
   | {
       href?: never
-      icon: Exclude<IconVariants, 'email' | 'dna'>
+      icon: Exclude<IconVariants, 'email' | 'dna' | 'hospital'>
       link?: never
       value: string | React.ReactElement
     }
