@@ -48,13 +48,15 @@ export const VaccineModal = ({ onClose, open }: VaccineProps) => {
           </h2>
         </div>
 
-        <div className="flex flex-col justify-center gap-4 text-sm">
-          {Object.keys(RABIES_VACCINE).map((key, i) => (
-            <p key={i}>
-              <span className="font-medium">{key}:</span>{' '}
-              {RABIES_VACCINE[key as keyof typeof RABIES_VACCINE]}
-            </p>
-          ))}
+        <div>
+          <ul className="mb-4 flex flex-col justify-center gap-4 text-sm">
+            {Object.keys(RABIES_VACCINE).map((key, i) => (
+              <li key={i}>
+                <span className="font-medium">{key}:</span>{' '}
+                {RABIES_VACCINE[key as keyof typeof RABIES_VACCINE]}
+              </li>
+            ))}
+          </ul>
           <button
             className="rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
             onClick={onClose}

@@ -50,29 +50,30 @@ const FAVOURITES: Favourite[] = [
 export const Favourites = () => {
   return (
     <Section icon="heart" title="My Favourite Things">
-      <div className="mt-4 flex flex-col items-center justify-center gap-4">
-        {FAVOURITES.map((f, i) => (
-          <a
-            className="font-semibold hover:underline"
-            href={f.url}
-            key={i}
-            rel="noreferrer"
-            target="_blank"
-          >
-            {f.logo && f.alt ? (
-              <div className="m-auto flex h-20 items-center justify-center">
-                <img
-                  alt={f.alt}
-                  className="margin-x-auto block h-[100%] w-auto max-w-[100%]"
-                  src={f.logo}
-                />
-              </div>
-            ) : (
-              f.title
-            )}
-          </a>
+      <ul className="mt-4 flex flex-col items-center justify-center gap-4">
+        {FAVOURITES.map(({ alt, logo, title, url }, i) => (
+          <li key={i}>
+            <a
+              className="font-semibold hover:underline"
+              href={url}
+              rel="noreferrer"
+              target="_blank"
+            >
+              {logo && alt ? (
+                <div className="m-auto flex h-20 items-center justify-center">
+                  <img
+                    alt={alt}
+                    className="margin-x-auto block h-[100%] w-auto max-w-[100%]"
+                    src={logo}
+                  />
+                </div>
+              ) : (
+                title
+              )}
+            </a>
+          </li>
         ))}
-      </div>
+      </ul>
     </Section>
   )
 }

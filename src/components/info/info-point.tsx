@@ -17,7 +17,7 @@ type InfoPointProps =
 
 export const InfoPoint = ({ link, href, icon, value }: InfoPointProps) => {
   return (
-    <div className="grid grid-cols-2 items-center">
+    <li className="grid grid-cols-2 items-center">
       <Icon color="blue" icon={icon} />
       {link && href ? (
         <a
@@ -31,6 +31,6 @@ export const InfoPoint = ({ link, href, icon, value }: InfoPointProps) => {
       ) : (
         <p className="text-left">{value}</p>
       )}
-    </div>
+    </li>
   )
 }

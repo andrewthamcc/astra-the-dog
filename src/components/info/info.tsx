@@ -8,7 +8,7 @@ export const Info = () => {
 
   return (
     <Section icon="dog" title="Who am I?">
-      <div className="flex flex-col gap-2 text-left">
+      <ul className="flex flex-col gap-2 text-left">
         <InfoPoint icon="dogSide" value="Mini Goldendoodle" />
         <InfoPoint icon="gender" value="Female" />
         <InfoPoint
@@ -41,7 +41,7 @@ export const Info = () => {
           icon="dna"
           link="Embark"
         />
-      </div>
+      </ul>
 
       <VaccineModal onClose={() => setIsModalOpen(false)} open={isModalOpen} />
     </Section>

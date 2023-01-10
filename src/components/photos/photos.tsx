@@ -36,23 +36,21 @@ export const Photos = () => {
   return (
     <Section icon="photo" title="It Me!">
       <Swiper modules={[Pagination]} pagination={{ clickable: true }}>
-        {PHOTOS.map(({ photo, caption }, i) => {
-          return (
-            <SwiperSlide key={i}>
-              <div
-                className="flex h-96 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 sm:h-[35rem]"
-                style={{ backgroundImage: `url('/assets/${photo}')` }}
+        {PHOTOS.map(({ photo, caption }, i) => (
+          <SwiperSlide key={i}>
+            <div
+              className="flex h-96 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 sm:h-[35rem]"
+              style={{ backgroundImage: `url('/assets/${photo}')` }}
+            >
+              <p
+                className="font-semi-bold text-lg text-white"
+                style={{ textShadow: '1px 1px #000' }}
               >
-                <p
-                  className="font-semi-bold text-lg text-white"
-                  style={{ textShadow: '1px 1px #000' }}
-                >
-                  {caption}
-                </p>
-              </div>
-            </SwiperSlide>
-          )
-        })}
+                {caption}
+              </p>
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Section>
   )
