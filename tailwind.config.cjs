@@ -23,6 +23,12 @@ module.exports = {
       backgroundImage: {
         'astra-footer': "url('/assets/footer.jpg')",
         'astra-hero': "url('/assets/hero.jpg')",
+        'astra-one': "url('/assets/one.jpg')",
+        'astra-two': "url('/assets/two.jpeg')",
+        'astra-three': "url('/assets/three.jpg')",
+        'astra-four': "url('/assets/four.jpeg')",
+        'astra-five': "url('/assets/five.jpeg')",
+        'astra-six': "url('/assets/six.jpg')",
       },
       fontFamily: {
         noto: ['Noto Sans', 'sans-serif'],

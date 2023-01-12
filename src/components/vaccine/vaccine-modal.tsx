@@ -19,26 +19,28 @@ export const RABIES_VACCINE = {
 
 ReactModal.setAppElement(document.getElementById('root') as HTMLElement)
 
+const MODAL_STYLE = {
+  overlay: {
+    backgroundColor: 'rgba(0,0,0,0.7)',
+  },
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+    borderRadius: '0.325rem',
+  },
+}
+
 export const VaccineModal = ({ onClose, open }: VaccineProps) => {
   return (
     <ReactModal
       contentLabel="rabies vaccine info"
       isOpen={open}
       onRequestClose={onClose}
-      style={{
-        overlay: {
-          backgroundColor: 'rgba(0,0,0,0.7)',
-        },
-        content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
-          borderRadius: '0.325rem',
-        },
-      }}
+      style={MODAL_STYLE}
     >
       <div className="p-4 text-center">
         <div className="mb-2 flex items-center justify-center">

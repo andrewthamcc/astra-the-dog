@@ -7,27 +7,27 @@ import 'swiper/swiper.min.css'
 
 const PHOTOS = [
   {
-    photo: 'one.jpg',
+    photo: 'bg-astra-one',
     caption: '☕️ at my favourite cafe',
   },
   {
-    photo: 'two.jpeg',
+    photo: 'bg-astra-two',
     caption: 'Ruffwear fit check',
   },
   {
-    photo: 'three.jpg',
+    photo: 'bg-astra-three',
     caption: 'Train ride',
   },
   {
-    photo: 'four.jpeg',
+    photo: 'bg-astra-four',
     caption: `Halloween. I'm a dragon, RAWR!`,
   },
   {
-    photo: 'five.jpeg',
+    photo: 'bg-astra-five',
     caption: 'I have a hard life...',
   },
   {
-    photo: 'six.jpg',
+    photo: 'bg-astra-six',
     caption: 'Fresh cut from The Bonehouse',
   },
 ] as const
@@ -39,8 +39,7 @@ export const Photos = () => {
         {PHOTOS.map(({ photo, caption }, i) => (
           <SwiperSlide key={i}>
             <div
-              className="flex h-96 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 sm:h-[35rem]"
-              style={{ backgroundImage: `url('/assets/${photo}')` }}
+              className={`flex h-96 w-full flex-col items-center justify-end bg-cover bg-center bg-no-repeat pb-8 sm:h-[35rem] ${photo}`}
             >
               <p
                 className="font-semi-bold text-lg text-white"

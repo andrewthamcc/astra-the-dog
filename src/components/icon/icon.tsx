@@ -62,10 +62,10 @@ const iconVariants: Record<IconVariants, IconifyIcon> = {
 type ColorVariants = 'pink' | 'teal' | 'blue' | 'black' | 'gray'
 const colors: Record<ColorVariants, string> = {
   black: 'black',
-  blue: '#1D3557',
-  gray: '#B5B5B5',
-  pink: '#D32B79',
-  teal: '#49BEDF',
+  blue: 'text-astra-blue',
+  gray: 'text-astra-gray',
+  pink: 'text-astra-pink',
+  teal: 'text-astra-teal',
 }
 
 interface IconProps {
@@ -77,9 +77,9 @@ interface IconProps {
 export const Icon = ({ className, color = 'black', icon }: IconProps) => {
   return (
     <div
-      className={`flex flex-col items-center justify-center text-4xl ${className}`}
+      className={`flex flex-col items-center justify-center text-4xl ${className} ${colors[color]}`}
     >
-      <Iconify icon={iconVariants[icon]} style={{ color: colors[color] }} />
+      <Iconify icon={iconVariants[icon]} />
     </div>
   )
 }

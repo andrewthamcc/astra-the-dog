@@ -1,81 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
 import { Section } from '../../layout'
 import { Icon } from '../icon'
+import { useGetLocation } from './useGetLocation'
 
 export const Location = () => {
-  const [isLoading, setIsLoading] = useState(false)
-  const [coords, setCoords] = useState<
-    { lat: number; long: number } | undefined
-  >(undefined)
-  const [errorMessage, setErrorMessage] = useState<string | undefined>(
-    undefined
-  )
+  const [getLocationData, { data, loading, error }] = useGetLocation()
 
   const isQRScanned = document.location.search.includes(import.meta.env.VITE_QR)
 
-  const handleGetLocation = () => {
-    setIsLoading(true)
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const lat = position.coords.latitude
-          const long = position.coords.longitude
-
-          setCoords({ lat, long })
-          setIsLoading(false)
-        },
-        (error) => {
-          let message = 'error'
-          switch (error.code) {
-            case error.PERMISSION_DENIED:
-              message = 'Permission Denied.'
-              break
-            case error.POSITION_UNAVAILABLE:
-              message = 'Location unavailable.'
-              break
-            case error.TIMEOUT:
-              message = 'Location request timed out.'
-              break
-            default:
-              message = 'An unknown error occurred.'
-              break
-          }
-          setErrorMessage(message)
-          setIsLoading(false)
-        }
-      )
-    }
-  }
-
-  const emailSubject = `Astra's Location`
-  const emailBody = `Find me here! latitude: ${coords?.lat} longitude: ${coords?.long}`
-
-  return (
-    <Section icon="location" title="Where am I?">
-      {!coords && !isLoading && (
-        <>
-          <button
-            className="my-2 rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
-            onClick={handleGetLocation}
-            type="button"
-          >
-            Locate Me!
-          </button>
-          {!isQRScanned && (
-            <p className="text-xs italic">
-              Oops! You didn&apos;t arrive by scanning my collar.
-            </p>
-          )}
-          <p className="text-xs italic">
-            {isQRScanned
-              ? `I'll ask you for permission!`
-              : `This will find you!`}
-          </p>
-        </>
-      )}
-      {!coords && isLoading && (
+  if (loading) {
+    return (
+      <Section icon="location" title="Where am I?">
         <div role="status">
           <svg
             aria-hidden="true"
@@ -95,26 +31,46 @@ export const Location = () => {
           </svg>
           <span className="sr-only">Loading...</span>
         </div>
-      )}
+      </Section>
+    )
+  }
 
-      {errorMessage && (
-        <p className="text-bold decoration-red">{errorMessage}</p>
-      )}
-      {coords && (
+  if (error) {
+    return (
+      <Section icon="location" title="Where am I?">
+        <p className="text-bold decoration-red">{error}</p>
+
+        <button
+          className="my-2 rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
+          onClick={getLocationData}
+          type="button"
+        >
+          Try Again?
+        </button>
+      </Section>
+    )
+  }
+
+  if (data) {
+    const emailSubject = `Astra's Location`
+    const emailBody = `Find me here! latitude: ${data.lat} longitude: ${data.long}`
+
+    return (
+      <Section icon="location" title="Where am I?">
         <div className="m-auto my-4">
           <MapContainer
-            center={[coords.lat, coords.long]}
+            center={[data.lat, data.long]}
             scrollWheelZoom={false}
             zoom={16}
           >
             <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
-            <Marker position={[coords.lat, coords.long]}>
+            <Marker position={[data.lat, data.long]}>
               <Popup>
                 <Icon color="pink" icon="dog" />
               </Popup>
             </Marker>
           </MapContainer>
-          {isQRScanned ? (
+          {isQRScanned && (
             <div>
               <p>Email my location or call my paw-rents</p>
               <div className="flex flex-col items-center justify-center gap-2">
@@ -139,17 +95,29 @@ export const Location = () => {
                 </a>
               </div>
             </div>
-          ) : (
-            <button
-              className="mt-2 rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
-              onClick={() => setCoords(undefined)}
-              type="button"
-            >
-              Close
-            </button>
           )}
         </div>
+      </Section>
+    )
+  }
+
+  return (
+    <Section icon="location" title="Where am I?">
+      <button
+        className="my-2 rounded-md border-2 border-astra-gray bg-astra-blue px-4 py-2 text-white"
+        onClick={getLocationData}
+        type="button"
+      >
+        Locate Me!
+      </button>
+      {!isQRScanned && (
+        <p className="text-xs italic">
+          Oops! You didn&apos;t arrive by scanning my collar.
+        </p>
       )}
+      <p className="text-xs italic">
+        {isQRScanned ? `I'll ask you for permission!` : `This will find you!`}
+      </p>
     </Section>
   )
 }
