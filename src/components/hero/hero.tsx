@@ -20,7 +20,7 @@ export const Hero = () => {
         </div>
         <h2 className="text-xl">paw-sonal website</h2>
       </div>
-      <div className="h-96 rounded-md bg-astra-hero bg-cover bg-center bg-no-repeat drop-shadow-sm" />
+      <div className="h-96 rounded-md bg-astra-hero bg-cover bg-center bg-no-repeat" />
       <div className="mt-10 mb-10 text-center">
         <p className="text-2xl">Spunk, fluff, sass and full of class!</p>
         <p className="text-sm">Toronto, Canada</p>

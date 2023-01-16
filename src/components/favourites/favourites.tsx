@@ -35,12 +35,12 @@ const FAVOURITES: Favourite[] = [
     alt: 'When Hounds Fly crest',
     url: 'https://www.whenhoundsfly.com/',
   },
-  {
-    logo: DogLogic,
-    title: 'Dog Logic',
-    alt: 'Dog Logic logo',
-    url: 'https://www.doglogictoronto.ca/',
-  },
+  // {
+  //   logo: DogLogic,
+  //   title: 'Dog Logic',
+  //   alt: 'Dog Logic logo',
+  //   url: 'https://www.doglogictoronto.ca/',
+  // },
   {
     title: 'Danica Olivia Photography',
     url: 'https://danicaolivaphotography.com/',

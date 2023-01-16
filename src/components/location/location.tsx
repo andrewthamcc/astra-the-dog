@@ -52,19 +52,18 @@ export const Location = () => {
   }
 
   if (data) {
+    const { lat, long } = data
     const emailSubject = `Astra's Location`
-    const emailBody = `Find me here! latitude: ${data.lat} longitude: ${data.long}`
+    const emailBody = `Find me here! 
+    latitude: ${lat} longitude: ${long}
+    https://maps.google.com/?q=${lat},${long}`
 
     return (
       <Section icon="location" title="Where am I?">
         <div className="m-auto my-4">
-          <MapContainer
-            center={[data.lat, data.long]}
-            scrollWheelZoom={false}
-            zoom={16}
-          >
+          <MapContainer center={[lat, long]} scrollWheelZoom={false} zoom={16}>
             <TileLayer url="https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png" />
-            <Marker position={[data.lat, data.long]}>
+            <Marker position={[lat, long]}>
               <Popup>
                 <Icon color="pink" icon="dog" />
               </Popup>
@@ -76,7 +75,7 @@ export const Location = () => {
               <div className="flex flex-col items-center justify-center gap-2">
                 <a
                   className="flex cursor-pointer gap-1 font-semibold hover:underline"
-                  href={`mailto:hello@astrathedog.cc?subject=${emailSubject}&body=${emailBody}`}
+                  href={`mailto:hello@astrathedog.com?subject=${emailSubject}&body=${emailBody}`}
                   rel="noreferrer"
                   target="_blank"
                 >
