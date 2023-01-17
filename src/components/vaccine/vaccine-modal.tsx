@@ -7,13 +7,14 @@ interface VaccineProps {
   open: boolean
 }
 
-export const RABIES_VACCINE = {
+const RABIES_VACCINE = {
   Producer: 'Merial',
   Type: 'Killed Virus',
   'Serial/Lot #': 18511,
   'Lot Exp': '2023/02/10',
   'Tag #': 13120579,
   Date: '2022/03/24',
+  DHPP: '2023/12/28',
   Vet: `Ciara O'Meara DVM`,
 } as const
 
@@ -37,7 +38,7 @@ const MODAL_STYLE = {
 export const VaccineModal = ({ onClose, open }: VaccineProps) => {
   return (
     <ReactModal
-      contentLabel="rabies vaccine info"
+      contentLabel="vaccine info"
       isOpen={open}
       onRequestClose={onClose}
       style={MODAL_STYLE}
