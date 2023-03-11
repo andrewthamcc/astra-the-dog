@@ -8,14 +8,14 @@ interface VaccineProps {
 }
 
 const RABIES_VACCINE = {
-  Producer: 'Merial',
+  Producer: 'Boehringer-Ingelheim',
   Type: 'Killed Virus',
-  'Serial/Lot #': 18511,
-  'Lot Exp': '2023/02/10',
-  'Tag #': 13120579,
-  Date: '2022/03/24',
-  DHPP: '2023/12/28',
-  Vet: `Ciara O'Meara DVM`,
+  'Serial/Lot #': 18551,
+  'Lot Exp': '2024/05/19',
+  'Tag #': 14723806,
+  Date: '2023/03/09',
+  DHPP: '2022/12/28',
+  Vet: `Michael Ellison, DVM`,
 } as const
 
 ReactModal.setAppElement(document.getElementById('root') as HTMLElement)
