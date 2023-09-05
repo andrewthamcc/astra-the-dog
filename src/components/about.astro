@@ -1,0 +1,125 @@
+---
+import { Icon } from 'astro-icon'
+import Section from '../components/section.astro'
+import Vaccine from './vaccine'
+
+interface Icon {
+  name: string
+  alt: string
+}
+
+interface Info {
+  icon: Icon
+  info: string
+}
+
+interface ExternalInfo {
+  href: string
+  name: string
+  icon: Icon
+}
+
+const INFO: Info[] = [
+  {
+    icon: {
+      name: 'mdi:dog-side',
+      alt: 'dog',
+    },
+    info: 'Mini Goldendoodle',
+  },
+  {
+    icon: {
+      name: 'mdi:gender-female',
+      alt: 'gender',
+    },
+    info: 'Female',
+  },
+  {
+    icon: {
+      name: 'mdi:cake-variant-outline',
+      alt: 'birthday cake',
+    },
+    info: new Date('10/15/2021').toLocaleDateString(),
+  },
+  {
+    icon: {
+      name: 'mdi:palette-outline',
+      alt: 'color',
+    },
+    info: 'Cream',
+  },
+  {
+    icon: {
+      name: 'mdi:ruler',
+      alt: 'ruler',
+    },
+    info: '38cm',
+  },
+  {
+    icon: {
+      name: 'mdi:weight-kilogram',
+      alt: 'weight',
+    },
+    info: '7.5kg',
+  },
+  {
+    icon: {
+      name: 'mdi:drivers-license-outline',
+      alt: 'license',
+    },
+    info: 'D21-357862',
+  },
+]
+
+const EXTERNAL: ExternalInfo[] = [
+  {
+    href: 'https://www.bluecrossanimalhospital.ca/',
+    name: 'Bluecross Animal Hospital',
+    icon: {
+      name: 'mdi:hospital-box-outline',
+      alt: 'hospital',
+    },
+  },
+  {
+    href: 'https://embarkvet.com/dog/astra78',
+    name: 'Embark',
+    icon: {
+      name: 'mdi:dna',
+      alt: 'DNA',
+    },
+  },
+]
+---
+
+<Section icon={{ name: 'mdi:dog', alt: 'dog' }} title="Who am I?">
+  <ul class="flex flex-col gap-2">
+    {
+      INFO.map(({ icon, info }) => (
+        <li class="grid grid-cols-2 items-center text-astra-blue">
+          <Icon class="h-8 m-auto" name={icon.name} alt={icon.alt} />
+          <p class="text-left text-astra-blue">{info}</p>
+        </li>
+      ))
+    }
+
+    <li class="grid grid-cols-2 items-center text-astra-blue">
+      <Icon class="h-8 m-auto" name="mdi:needle" />
+      <Vaccine client:only="react" />
+    </li>
+
+    {
+      EXTERNAL.map(({ href, icon, name }) => (
+        <li class="grid grid-cols-2 items-center text-astra-blue">
+          <Icon class="h-8 m-auto" name={icon.name} alt={icon.alt} />
+          <a
+            class="text-left font-semibold hover:underline text-astra-blue"
+            href={href}
+            target="_blank"
+          >
+            {name}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Section>

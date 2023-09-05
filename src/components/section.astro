@@ -1,0 +1,27 @@
+---
+import { Icon } from 'astro-icon'
+
+interface Icon {
+  name: string
+  alt: string
+}
+
+interface Props {
+  icon: Icon
+  title: string
+}
+
+const { icon, title } = Astro.props
+---
+
+<section
+  class="mx-auto my-4 flex-col items-center justify-center rounded-lg bg-white px-4 py-6 text-center drop-shadow-lg sm:my-8 sm:w-4/5 md:w-1/2"
+>
+  <div class="my-3 inline-block rounded-full border-2 p-2">
+    <Icon class="h-8 text-astra-pink" alt={icon.alt} name={icon.name} />
+  </div>
+  <h3 class="mb-4 font-noto text-2xl font-bold text-astra-blue">
+    {title}
+  </h3>
+  <slot />
+</section>

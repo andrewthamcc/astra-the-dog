@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets'
+import One from '../images/one.jpg'
+import Two from '../images/two.jpeg'
+import Three from '../images/three.jpg'
+import Four from '../images/four.jpeg'
+import Five from '../images/five.jpg'
+
+interface GalleryImage {
+  alt: string
+  image: ImageMetadata
+  caption: string
+}
+
+const IMAGES: GalleryImage[] = [
+  {
+    alt: 'At the cafe',
+    image: One,
+    caption: 'At my favourite cafe',
+  },
+  {
+    alt: 'Winter wear',
+    image: Two,
+    caption: 'Ruffwear fit check',
+  },
+  {
+    alt: 'On the train',
+    image: Three,
+    caption: 'Train ride',
+  },
+  {
+    alt: 'Hallowoof',
+    image: Four,
+    caption: `I'm a dragon, rawr!`,
+  },
+  {
+    alt: 'Lying down',
+    image: Five,
+    caption: 'sploot',
+  },
+]
+---
+
+<swiper-container pagination="true">
+  {
+    IMAGES.map(({ alt, image, caption }) => (
+      <swiper-slide>
+        <div class="relative flex items-center justify-center">
+          <Image alt={alt} src={image} height={400} />
+          <p
+            class="font-semi-bold text-lg text-white absolute bottom-6"
+            style={{ textShadow: '1px 1px #000' }}
+          >
+            {caption}
+          </p>
+        </div>
+      </swiper-slide>
+    ))
+  }
+</swiper-container>

@@ -1,0 +1,44 @@
+---
+import { getImage } from 'astro:assets'
+import Layout from '../layouts/Layout.astro'
+import Section from '../components/section.astro'
+import About from '../components/about.astro'
+import Favourites from '../components/favourites.astro'
+import Location from '../components/location'
+import HeroImage from '../images/hero.jpg'
+import FooterImage from '../images/footer.jpg'
+import Gallery from '../components/gallery.astro'
+
+const heroImage = await getImage({ src: HeroImage })
+---
+
+<Layout title="Astra the dog">
+  <div
+    class="h-96 bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${heroImage.src})`}
+  >
+  </div>
+  <div class="mt-10 mb-10 text-center">
+    <p class="text-2xl text-astra-blue">Spunk, fluff, sass and full of class!</p>
+    <p class="text-xs italic">Toronto, Canada</p>
+    <div>🇨🇦</div>
+  </div>
+
+  <About />
+
+  <Section icon={{ name: 'mdi:location', alt: 'location' }} title="Where am I?">
+    <Location client:only="react" />
+  </Section>
+
+  <Section icon={{ name: 'mdi:camera', alt: 'camera' }} title="It me!">
+    <Gallery client:visible />
+  </Section>
+
+  <Favourites />
+
+  <div
+    class="h-96 bg-cover bg-center bg-no-repeat"
+    style={`background-image: url(${FooterImage.src})`}
+  >
+  </div>
+</Layout>

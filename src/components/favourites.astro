@@ -1,0 +1,70 @@
+---
+import { Image } from 'astro:assets'
+import Section from './section.astro'
+import PolkaDotties from '../images/polkadotties.png'
+import Ruffwear from '../images/ruffwear.jpeg'
+import WhenHoundsFly from '../images/whenhoundsfly.png'
+import DogLogic from '../images/doglogic.webp'
+
+interface Favourite {
+  alt?: string
+  logo?: ImageMetadata
+  title: string
+  url: string
+}
+
+const FAVOURITES: Favourite[] = [
+  {
+    logo: PolkaDotties,
+    title: `Polka Dottie's`,
+    alt: 'Polka Dotties grooming',
+    url: 'http://www.polkadotties.ca/',
+  },
+  {
+    logo: Ruffwear,
+    title: 'Ruffwear',
+    alt: 'Ruffwear logo',
+    url: 'https://ruffwear.com/',
+  },
+  {
+    logo: WhenHoundsFly,
+    title: 'When Hounds Fly Dog Training',
+    alt: 'When Hounds Fly crest',
+    url: 'https://www.whenhoundsfly.com/',
+  },
+  {
+    logo: DogLogic,
+    title: 'Dog Logic',
+    alt: 'Dog Logic logo',
+    url: 'https://www.doglogictoronto.ca/',
+  },
+  {
+    title: 'Danica Olivia Photography',
+    url: 'https://danicaolivaphotography.com/',
+  },
+]
+---
+
+<Section icon={{ name: 'mdi:heart', alt: 'heart' }} title="My favourite things">
+  <ul class="mt-4 flex flex-col items-center justify-center gap-4">
+    {
+      FAVOURITES.map(({ alt, logo, title, url }) => (
+        <li>
+          <a class="font-semibold hover:underline" href={url} target="_blank">
+            {logo && alt ? (
+              <div class="m-auto flex h-28 items-center justify-center">
+                <Image
+                  alt={alt}
+                  class="margin-x-auto block h-[100%] w-auto max-w-[100%]"
+                  src={logo}
+                />
+              </div>
+            ) : (
+              title
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Section>
