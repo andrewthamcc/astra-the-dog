@@ -73,7 +73,6 @@ export default function Location() {
             <a
               className="inline font-semibold hover:underline"
               href={`mailto:hello@astrathedog.com?subject=${emailSubject}&body=${emailBody}`}
-              rel="noreferrer"
               target="_blank"
             >
               email
@@ -82,7 +81,6 @@ export default function Location() {
             <a
               className="inline font-semibold hover:underline"
               href={`tel:${import.meta.env.PUBLIC_TELEPHONE}`}
-              rel="noreferrer"
               target="_blank"
             >
               call
