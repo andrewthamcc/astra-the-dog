@@ -53,7 +53,7 @@ export default function Location() {
   if (data) {
     const { lat, long } = data
     const emailSubject = `Astra's Location`
-    const emailBody = `Find me here! 
+    const emailBody = `Find me here!
     latitude: ${lat} longitude: ${long}
     https://maps.google.com/?q=${lat},${long}`
 
