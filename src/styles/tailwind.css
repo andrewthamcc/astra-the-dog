@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+    --color-*: initial;
+    --color-white: #fff;
+    --color-astra-blue: #1D3557;
+    --color-astra-pink: #D32B79;
+    --color-astra-teal: #49BEDF;
+}
