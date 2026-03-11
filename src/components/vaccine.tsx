@@ -4,12 +4,12 @@ import ReactModal from 'react-modal'
 const RABIES_VACCINE = {
   Producer: 'Boehringer-Ingelheim',
   Type: 'Killed Virus',
-  'Serial/Lot #': 18551,
-  'Lot Exp': '2024/05/19',
-  'Tag #': 14723806,
-  Date: '2023/03/09',
+  'Serial/Lot #': 18667,
+  'Lot Exp': '2027/03/20',
+  'Tag #': 64837825,
+  Date: '2026/03/09',
   DHPP: '2025/12/22',
-  Vet: `Michael Ellison, DVM`,
+  Vet: `Saanya Karim, DVM`,
 } as const
 
 const MODAL_STYLE = {
@@ -71,7 +71,7 @@ export default function Vaccine() {
         className="inline-block text-left font-semibold text-astra-blue hover:underline"
         onClick={() => setIsOpen(true)}
       >
-        13120579
+        {RABIES_VACCINE['Tag #']}
       </button>
     </>
   )
